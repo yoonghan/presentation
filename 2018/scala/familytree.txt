@@ -1,0 +1,81 @@
+case class OpenMarket(val event:String, val ticket:Int)
+case class Sell(val event:String)
+case class Get(val event:String)
+
+import akka.actor._
+import scala.concurrent.Future
+import akka.util.Timeout
+import akka.pattern.ask
+import scala.concurrent.duration._
+
+
+object TicketSellerCreator {
+  def props(): Props = Props(new TicketSeller())
+}
+
+class TicketSellerCreator() extends Actor {
+  import context._
+
+  override def receive = {
+    case OpenMarket(event, ticket) => {
+      val actor = context.actorOf(TicketSeller.props(ticket), event)
+    }
+    case Sell(event) => {
+      println("Inquired for selling")
+      context.child(event).get.forward(Sell(event))
+    }
+    case Get(event) => {
+      context.child(event).get.forward(Get(event))
+    }
+    case _ => println("""No such method""")
+  }
+}
+
+object TicketSeller {
+  def props(tickets:Int): Props = Props(new TicketSeller(tickets))
+}
+
+class TicketSeller(val tickets:Int) extends Actor {
+  var ticketsInHand = tickets
+  override def receive = {
+    case Sell(event) => {
+      ticketsInHand = ticketsInHand - 1
+      println("Children selling, remain:"+ticketsInHand)
+    }
+    case Get(event) => {
+      sender() ! ticketsInHand
+    }
+    case _ => println("No such Method")
+  }
+}
+
+
+
+import akka.actor._
+
+val system = ActorSystem("ticketing-system")
+val ticketSystem = system.actorOf(TicketSellerCreator.props(), "ticketsystem")
+
+ticketSystem ! OpenMarket("brunomars", 5)
+ticketSystem ! Sell("brunomars")
+ticketSystem ! Sell("brunomars")
+ticketSystem ! OpenMarket("yuna", 5)
+ticketSystem ! Sell("yuna")
+
+ticketSystem ! ShowPath("brunomars")
+ticketSystem ! ShowPath("yuna")
+
+val ticketSystem2 = system.actorOf(TicketSellerCreator.props(), "ticketsystem2")
+
+import akka.actor._
+import scala.concurrent._
+import akka.pattern.ask
+import akka.util.Timeout
+import scala.concurrent.duration._
+
+implicit val timeout = Timeout(5 seconds)
+
+
+Await.result((ticketSystem ? Get("brunomars")), 5 seconds)
+
+system.terminate

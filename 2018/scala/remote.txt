@@ -1,0 +1,54 @@
+val conf="""
+akka{
+  actor {
+    provider="akka.remote.RemoteActorRefProvider"
+  }
+  remote {
+    enabled-transport=["akka.remote.netty.tcp"]
+    netty.tcp {
+      hostname="0.0.0.0"
+      port = 2551
+    }
+  }
+}
+"""
+
+import com.typesafe.config._
+import akka.actor._
+class Simple extends Actor {
+  def receive = {
+    case m => println(s"received $m!")
+  }
+}
+
+val config = ConfigFactory.parseString(conf)
+val backend=ActorSystem("backend", config)
+backend.actorOf(Props[Simple], "simple")
+
+
+
+val conf="""
+akka{
+  actor {
+    provider="akka.remote.RemoteActorRefProvider"
+  }
+  remote {
+    enabled-transport=["akka.remote.netty.tcp"]
+    netty.tcp {
+      hostname="0.0.0.0"
+      port = 2552
+    }
+  }
+}
+"""
+
+import com.typesafe.config._
+import akka.actor._
+val config = ConfigFactory.parseString(conf)
+val frontend=ActorSystem("frontend", config)
+val path = "akka.tcp://backend@0.0.0.0:2551/user/simple"
+val simple = frontend.actorSelection(path)
+
+
+frontend.terminate
+backend.terminate

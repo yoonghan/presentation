@@ -1,0 +1,11 @@
+val x = 1
+x = x + 1
+var y = 2
+y = y + 1
+
+def pow(x:Int):Int = x * x
+val pow = (x:Int) => x * x
+
+def pow3(x:Int => Int, y:Int) = {x(y) * y}
+
+pow _

@@ -1,0 +1,91 @@
+case class OpenMarket(val event:String, val ticket:Int)
+case class Sell(val event:String)
+case class Get(val event:String)
+
+import akka.actor._
+import scala.concurrent._
+import akka.pattern.ask
+import akka.util.Timeout
+import scala.concurrent.duration._
+import scala.io.Source
+import akka.actor.SupervisorStrategy._
+import java.io._
+
+object TicketSellerV2 {
+  def props(tickets:Int): Props = Props(new TicketSellerV2(tickets))
+}
+
+class TicketSellerV2(val tickets:Int) extends Actor {
+
+  var ticketsInHand = tickets
+
+  val filename = "/Users/mmpkl05/personal/presentation/2018/textfile/sample1.txt"
+  var readFileSource = filename
+
+  override def preRestart(reason: Throwable, message: Option[Any]): Unit = {
+    //If it does not exist, create the file.
+    new File(filename).createNewFile()
+    super.preRestart(reason, message)
+  }
+
+  def readFile() = {
+    Source.fromFile(readFileSource)
+  }
+
+  override def receive() = {
+    case Sell(event) => {
+      ticketsInHand = ticketsInHand - 1
+      println("Children selling, remain:"+ticketsInHand)
+    }
+    case Get(event) => {
+      readFile()
+      sender() ! ticketsInHand
+    }
+    case _ => println("No such Method")
+  }
+}
+
+object TicketSellerCreatorV2 {
+  def props(): Props = Props(new TicketSellerCreatorV2())
+}
+
+class TicketSellerCreatorV2() extends Actor {
+  import context._
+
+  override val supervisorStrategy =
+    OneForOneStrategy(maxNrOfRetries = 10, withinTimeRange = 1 minute) {
+      case _: FileNotFoundException    => Restart
+      case _: Exception                => Resume
+    }
+
+  override def receive() = {
+    case OpenMarket(event, ticket) => {
+      println("Create")
+      val actor = context.actorOf(TicketSellerV2.props(ticket), event)
+    }
+    case Sell(event) => {
+      println("Sell")
+      context.child(event).get.forward(Sell(event))
+    }
+    case Get(event) => {
+      println("Get")
+      context.child(event).get.forward(Get(event))
+    }
+    case _ => println("""No such method""")
+  }
+}
+
+import akka.actor._
+import scala.concurrent._
+import akka.pattern.ask
+import akka.util.Timeout
+import scala.concurrent.duration._
+
+implicit val timeout = Timeout(5 seconds)
+
+val system = ActorSystem("ticket-system")
+val ticketSystem = system.actorOf(TicketSellerCreatorV2.props(), "ticketsystem")
+
+ticketSystem ! OpenMarket("test", 5)
+Await.result((ticketSystem ? Get("test")), 5 seconds)
+ticketSystem ! Sell("test")

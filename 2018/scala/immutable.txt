@@ -1,0 +1,57 @@
+"*var counter = 0
+
+for(x <- 0 to 10) {
+  counter = counter+1
+}
+
+print counter
+
+val newCounter = (0 to 10).reduceLeft((x,y) => {y+1})
+val newCounter = (0 to 10).fold(0)((x,y) => {y+1})
+
+def counter(cnt:Int, max:Int):Int = {
+  if(cnt > max) {
+    cnt
+  }
+  else {
+    counter(cnt + 1,max)
+  }
+}
+print(counter(0, 10))
+
+case class Person(name:String, age:Int, sex: Character)
+
+---
+
+print("*\n**\n***")
+
+var x = 1
+while(x<5) {
+  println("*" * x)
+  x=x+1
+}
+
+for(x <- 1 to 5) {println("*" * x)}
+
+var z = 1
+
+def printStar(x:Int) {
+  if(x < 5) {
+    println("*" * x)
+    printStar(x + 1)
+  }
+}
+
+
+---
+
+case object X
+case class C(a:String)
+case class D(b:String)
+val anonymous = C("test").asInstanceOf[Object]
+anonymous match {
+case C(a) => print("C")
+case D(a) => print("D")
+case X => print("X")
+case _ => print("D")
+}
