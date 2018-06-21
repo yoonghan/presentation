@@ -1,14 +1,7 @@
-import React, { Component } from 'react';
-import {AppRegistry, Platform, StyleSheet, Text, View, Button} from 'react-native';
+var React = require('react');
+var ReactNative = require('react-native');
+var {Text} = ReactNative;
 
-type Props = {};
-class SimpleApp extends Component<Props> {
-  render() {
-    <View>
-      <Text>
-        Why so serious
-      </Text>
-    </View>
-  }
-}
-AppRegistry.registerComponent('SimpleApp', () => SimpleApp);
+var SimpleApp = React.createClass({});
+
+ReactNative.AppRegistry.registerComponent('SimpleApp', () => SimpleApp);
