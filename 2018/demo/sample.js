@@ -5,7 +5,7 @@ var {Text} = ReactNative;
 var SimpleApp = React.createClass({
     render() {
         return (
-            <View style={{flex: 1, backgroundColor: 'transparent', width:width}}>
+            <View>
                 <Text>Hello</Text>
             </View>
         )
