@@ -1,0 +1,44 @@
+html
+  head
+    title Bubble prototype
+    include ../dist/header.incl
+    style.
+      body {
+        background: #000000;
+      }
+      #bubbles-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100px;
+        width: 100px;
+
+        perspective: 300px;
+        -webkit-perspective: 300px;
+        perspective-origin: top;
+        -webkit-perspective-origin: top;
+      }
+      #bubble {
+        border: 50px solid;
+        border-color: #0f0;
+        border-radius: 50%;
+        display: block;
+        position: fixed;
+        height:100px;
+        width:100px;
+        transform: rotateX(-90deg) translateZ(50px);
+        -webkit-transform: rotateX(-90deg) translateZ(50px);
+
+        z-index: 1;
+      }
+
+  body
+    div(id="bubbles-container")
+      div(id="bubble")
+
+
+  include ../dist/footer.incl
+
+  script.
+    var bubble = document.getElementById("bubble");
+    TweenMax.from(bubble, 2, {scale: 0, opacity: 1});

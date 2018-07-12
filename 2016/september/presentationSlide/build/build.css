@@ -1,0 +1,230 @@
+/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+.bespoke-backdrop.backdrop1 {
+  background: url("../images/castle.jpg");
+  background-size: cover;
+}
+h2 {
+  font-weight: bold;
+}
+.question {
+  color: #d7ab8f;
+  font-size: 35pt;
+}
+.enlarge {
+  font-size: 35pt;
+}
+.fact {
+  color: #aab12c;
+  font-size: 35pt;
+}
+.product {
+  color: #01c6cf;
+  text-decoration: underline;
+}
+.whiten {
+  background: #696969;
+}
+.blend {
+  opacity: 0.7;
+}
+h1 {
+  color: #b02c33;
+  font-weight: bold;
+}
+.warning {
+  border: 1px solid;
+  margin: 10px 0px;
+  padding: 15px 10px 15px 50px;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  color: #9f6000;
+  background-color: #feefb3;
+}
+.highlight {
+  color: #f00;
+}
+img {
+  max-width: 640px;
+}
+.img-minime {
+  height: 200px;
+  width: 200px;
+  padding: 5px;
+  border: 1px solid;
+}
+.img-biggieme {
+  height: 100%;
+  padding: 5px;
+}
+.with-batman {
+  background: url("../images/batman.jpg");
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  font-size: 80pt;
+}
+li .img-minime {
+  display: block;
+  height: 100%;
+}
+section {
+  display: none;
+}
+.bespoke-parent {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.bespoke-slide {
+  width: 640px;
+  height: 480px;
+  position: absolute;
+  top: 50%;
+  margin-top: -240px;
+  left: 50%;
+  margin-left: -320px;
+}
+body section.bespoke-slide {
+  -webkit-transition: -webkit-transform 0.7s ease, opacity 0.7s ease;
+  transition: transform 0.7s ease, opacity 0.7s ease;
+}
+body section.bespoke-active {
+  opacity: 1;
+  z-index: 10;
+  background: #232323;
+}
+body section.bespoke-after-1 {
+  -webkit-transform: translateX(360px) translateY(0px) rotateY(45deg) scale(0.2);
+  transform: translateX(360px) translateY(0px) rotateY(45deg) scale(0.2);
+  opacity: 0.2;
+  z-index: 3;
+}
+.coverflow section.bespoke-before {
+  -webkit-transform: translateX(-270px) rotateY(45deg) scale(0.6);
+  transform: translateX(-270px) rotateY(45deg) scale(0.6);
+  z-index: 6;
+}
+.coverflow section.bespoke-active {
+  z-index: 10;
+}

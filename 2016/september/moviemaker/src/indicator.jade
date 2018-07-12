@@ -1,0 +1,57 @@
+html
+  head
+    title Map Indicator
+    include ../dist/header.incl
+    style.
+      body {
+        background: #ffffff;
+      }
+      #shanghai {
+        position: absolute;
+        top: 50px;
+        left: 50px;
+      }
+
+      #beijing {
+        position: absolute;
+        top: 100px;
+        left: 150px;
+      }
+
+      .circle-pointer {
+        border: 3px solid;
+        border-color: red;
+        border-radius: 50%;
+        position: absolute;
+        width: 30px;
+        height: 30px;
+      }
+
+      .pointer {
+        border-radius: 50%;
+        background-color: red;
+        position: absolute;
+        box-shadow: 1px 1px 10px 1px;
+        opacity: 0.2;
+        display: none;
+        width: 21px;
+        height: 21px;
+        top: 7px;
+        left: 7px;
+      }
+  body
+    div(id="shanghai")
+      div(class="circle-pointer")
+      div(class="pointer")
+    div(id="beijing")
+      div(class="circle-pointer")
+      div(class="pointer")
+
+
+  include ../dist/footer.incl
+
+  script.
+    var indicators = document.getElementsByClassName("pointer");
+    [].forEach.call(indicators, function(el) {
+      TweenMax.to(el, 1, {opacity: 1, display: "inline", repeat: -1});
+    });

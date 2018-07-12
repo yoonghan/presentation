@@ -1,0 +1,4 @@
+You can start a gossip client by executing:
+java -jar gossip-java.jar
+
+The idea for this is that the server alive status based on each other.

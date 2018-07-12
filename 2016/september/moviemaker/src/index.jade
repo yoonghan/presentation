@@ -1,0 +1,68 @@
+html
+  head
+    title This is a movie
+    include ../dist/header.incl
+    link(rel='stylesheet', href="/css/main.css")
+
+  body
+    div(id="header")
+      span Prototype 1.0
+    div(id="video-clip")
+      div(id="bubble-container")
+        div(class="bubbles")
+        div(class="bubbles")
+        div(class="bubbles")
+        div(class="bubbles")
+        div(class="bubbles")
+        div(class="bubbles")
+      div(id="presentation")
+        div(id="floatingText")
+      div(id="video-clip-layer", class="fab")
+        div(id="txt-hello")
+          div(id="txt-hello-greetings") Hello,&nbsp;
+            span(id="txt-hello-user")
+          div(id="txt-hello-thanks") Thank you
+            span(id="txt-hello-loc") , for your support from <br>
+              span(id="txt-hello-user-location")
+            div(id="map")
+              div(id="beijing")
+                div(class="circle-pointer")
+                div(class="pointer")
+              div(id="malaysia")
+                div(class="circle-pointer")
+                div(class="pointer")
+        div(id="putt-putt-car")
+          div(id="putt-putt-car-tyre")
+          div(id="putt-putt-car-smog")
+
+    div(id="navigation")
+      button(id="start-movie", value="Resume Movie") Resume
+      button(id="stop-movie", value="Pause Movie") Pause
+
+
+    include ../dist/footer.incl
+
+    script(src='/js/util.js')
+    script(src='/js/main.js')
+    script(src='/js/timeline.js')
+
+    script.
+
+      var timeController = (function(){
+        //Create timeline
+        var $timeController = new TimeController();
+
+        $timeController.start();
+
+        var startButton = document.getElementById('start-movie');
+        var stopButton = document.getElementById('stop-movie');
+        startButton.onclick = $timeController.resume() ;
+        stopButton.onclick = $timeController.pause() ;
+
+        $timeController.hideNavigation = function() {
+          var nav = document.getElementById("navigation");
+          nav.style.display = "none";
+        }
+
+        return $timeController;
+      }());

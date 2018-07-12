@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Story Telling</title>
+    <link rel="stylesheet" type="text/css" href="build/build.css">
+  </head>
+  <body class="coverflow">
+    <article>
+      <section><img src="images/gossip.jpg" class="img-minime">
+        <h1>GOSSIP</h1>
+        <h3>A virus spreading like network</h3>
+      </section>
+      <section>
+        <hi>...</hi>
+      </section>
+      <section><img src="images/gossipNetwork.jpg"></section>
+      <section>
+        <h3 class="fact">Diskussion</h3>
+      </section>
+      <section data-bespoke-backdrop="super special">
+        <h2 class="question">WHAT IS GOSSIP - ING ?</h2>
+        <h3 class="bullet"></h3>
+        <ul>
+          <li class="fact">8</li>
+          <li>Peer to Peer communication</li>
+          <li>Effective in disseminating information ?</li>
+          <li>Efficient ?</li>
+        </ul>
+      </section>
+      <section data-bespoke-backdrop="super special">
+        <h2 class="question">What if machines are to do it ?</h2>
+      </section>
+      <section><img src="images/devastator.gif" class="img-biggieme"></section>
+      <section><img src="images/ftp.jpg"></section>
+      <section>
+        <h2 class="fact">YESTERDAY'S IP</h2><img src="images/portal1.png">
+        <h2 class="fact">TODAY</h2><img src="images/portal2.png">
+      </section>
+      <section><img src="images/matrix.gif" class="img-biggieme"></section>
+      <section>
+        <h1 class="fact">FUNDAMENTALS</h1>
+      </section>
+      <section>
+        <h2 class="fact">Network Protocols / Transport</h2>
+        <h3 class="bullet"></h3>
+        <ul>
+          <li>TCP/IP</li>
+          <li>UDP</li>
+        </ul>
+      </section>
+      <section>
+        <pre><code class="language-javascript">. = new Socket("127.0.0.1", 4444);
+. = new DatagramPacket(..., "127.0.0.1", 4444);
+</code></pre>
+        <h3 class="bullet"></h3>
+        <ul>
+          <li>Host Address and Port</li>
+          <li>Server / Client relationship (Unicast)</li>
+        </ul>
+      </section>
+      <section>
+        <h1 class="fact">Server / Host Machine</h1><img src="images/server.jpg">
+      </section>
+      <section>
+        <h3 class="question">QUIZ</h3>
+        <h2>Can the same <i>PORT NO</i> be opened twice on the same host?</h2>
+      </section>
+      <section>
+        <h2 class="question">What If ?</h2>
+        <h3 class="bullet"></h3>
+        <ul>
+          <li>Without Server</li>
+          <li>Sent to multiple users / computers</li>
+        </ul>
+      </section>
+      <section>
+        <h2 class="product">Hadoop</h2><br><img src="images/hadoop.jpg">
+      </section>
+      <section>
+        <h2 class="product">Elastic Search / Solr</h2><br><img src="images/elasticsearch.jpg">
+      </section>
+      <section>
+        <h2 class="product">CASSANDRA</h2><br><img src="images/cassandra0.jpg">
+      </section>
+      <section>
+        <h2 class="product">Cassandra</h2><br><img src="images/cassandra.jpg">
+      </section>
+      <section>
+        <h2>WHY ?</h2><img src="images/cluster.jpg">
+      </section>
+      <section>
+        <h2 class="question">Check Machine Availability</h2>
+        <h2 class="bullet"></h2>
+        <ul>
+          <li>Heartbeat ?</li>
+          <li>Ping every time ?</li>
+        </ul>
+      </section>
+      <section>
+        <h2>And we are talking 'bout <i class="highlight">100000000000000000000000000000000000000...</i> servers</h2>
+        <h2 class="bullet">Are you serious ?</h2><img src="images/aus.png">
+      </section>
+      <section>
+        <h2 class="question">Recap</h2>
+        <ul>
+          <li>Your IP VM / LDEV under Dynamic IP</li>
+          <li>Your colleague machine</li>
+          <li>Trouble to get a server</li>
+        </ul>
+      </section>
+      <section>
+        <h1 class="fact">SOLUTIONS</h1>
+      </section>
+      <section><img src="images/matrix.gif" class="img-biggieme"></section>
+      <section><img src="images/matrix2.gif" class="img-biggieme"></section>
+      <section>
+        <h2 class="fact">IPV4 - Class D</h2>
+        <h3>224.0.0.0 - 239.255.255.255</h3>
+        <div class="warning">MULTICAST and it is UDP ONLY</div>
+      </section>
+      <section>
+        <h2 class="fact">DEMO</h2>
+      </section>
+      <section>
+        <h2 class="highlight enlarge">LIMITATION</h2>
+        <h3 class="bullet"></h3>
+        <ul>
+          <li>Rely on router</li>
+          <li>Security</li>
+          <li>Scale</li>
+        </ul>
+      </section>
+      <section>
+        <h2 class="highlight enlarge">PROBLEMS</h2>
+        <h3 class="bullet"></h3>
+        <ul>
+          <li>No Multicast Back to TCP/IP</li>
+        </ul>
+      </section>
+      <section>
+        <h2>You had use it before !</h2>
+        <h3 class="bullet"></h3>
+        <ul>
+          <li>Peer 2 Peer</li>
+          <li class="product">Bittorrent<img src="images/bittorrent.png" class="img-minime"></li>
+        </ul>
+      </section>
+      <section>
+        <h1 class="with-batman">Gossip</h1>
+      </section>
+      <section>
+        <h2 class="fact">Gossip Protocol</h2><img src="images/gossipNetwork.png" class="img-minime">
+        <ul>
+          <li>All the nodes talk to each other peer wise</li>
+          <li>Global state</li>
+          <li>No Single point of coordinator</li>
+          <li>One down, others to carry</li>
+          <li>Self Managing</li>
+        </ul>
+      </section>
+      <section>
+        <h2 class="fact">DEMO</h2>
+      </section>
+      <section>
+        <h2 class="fact">Cut the crap...</h2>
+        <h2 class="fact">Cut the chase...</h2>
+      </section>
+      <section><img src="images/presenting.png" class="img-biggieme"></section>
+      <section>
+        <h2 class="bullet">These are just the beginnings...</h2><br>
+        <ul>
+          <li>WebSockets</li>
+          <li>Comet</li>
+          <li>IMCP / etc.</li>
+        </ul>
+      </section>
+      <section>
+        <h2 class="fact">Thank you</h2><br>
+        <h4>- An Walcron product -</h4>
+      </section>
+      <section>
+        <h1>Questions ?</h1>
+      </section>
+    </article>
+    <script src="build/build.js"></script>
+  </body>
+</html>

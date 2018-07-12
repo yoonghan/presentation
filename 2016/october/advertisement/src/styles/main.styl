@@ -1,0 +1,150 @@
+// New to Stylus? Check out http://learnboost.github.io/stylus
+// Use modern CSS thanks to Autoprefixer: https://github.com/ai/autoprefixer
+
+// Import CSS from "node_modules" and "bower_components"
+// thanks to Stylus' "import css" and "paths" options
+
+@import 'prism/themes/prism-okaidia.css'
+// Check out "bower_components/prism/themes/" for available themes
+
+h2 {
+  font-weight: bold;
+}
+
+.question {
+  color: #D7AB8F;
+	font-size: +35pt;
+}
+
+.enlarge {
+	font-size: +35pt;
+}
+
+.fact {
+  color: #AAB12C;
+	font-size: +35pt;
+}
+
+.product {
+  color: #01C6CF;
+	text-decoration: underline;
+}
+
+.whiten {
+  background: #696969;
+}
+
+.blend {
+		opacity: 0.7;
+}
+
+h1 {
+  color: #B02C33;
+	font-weight: bold;
+}
+
+.warning {
+  border: 1px solid;
+  margin: 10px 0px;
+  padding:15px 10px 15px 50px;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+	color: #9F6000;
+  background-color: #FEEFB3;
+}
+
+.highlight {
+  color: #ff0000
+}
+
+img {
+	max-width: 640px;
+}
+
+.img-minime {
+  height: 200px;
+	width: 200px;
+	padding: 5px;
+	border: 1px solid;
+}
+
+.img-biggieme {
+  height: 100%;
+	padding: 5px;
+}
+
+.with-batman {
+	background: url('../images/batman.jpg');
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+	color: #fff;
+	font-size: 80pt;
+}
+
+li .img-minime {
+  display: block;
+	height: 100%;
+}
+
+section {
+  display: none;
+}
+
+.bespoke-parent {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.bespoke-slide {
+  width: 640px;
+  height: 480px;
+  position: absolute;
+  top: 50%;
+  margin-top: -240px;
+  left: 50%;
+  margin-left: -320px;
+}
+
+body {
+	section.bespoke-slide {
+	  -webkit-transition: -webkit-transform .7s ease, opacity .7s ease
+	  -moz-transition: -moz-transform .7s ease, opacity .7s ease
+	  -ms-transition: -ms-transform .7s ease, opacity .7s ease
+	  -o-transition: -o-transform .7s ease, opacity .7s ease
+	  transition: transform .7s ease, opacity .7s ease
+	}
+
+	section.bespoke-active {
+		opacity: 1
+		z-index: 10
+		background: #232323
+	}
+
+	section.bespoke-after-1 {
+		-webkit-transform: translateX(360px) translateY(0px) rotateY(45deg) scale(0.2);
+		-moz-transform: translateX(360px) translateY(0px) rotateY(45deg) scale(0.2);
+		-ms-transform: translateX(360px) translateY(0px) rotateY(45deg) scale(0.2);
+		-o-transform: translateX(360px) translateY(0px) rotateY(45deg) scale(0.2);
+		transform: translateX(360px) translateY(0px) rotateY(45deg) scale(0.2);
+		opacity: 0.2
+		z-index: 3
+	}
+}
+
+.coverflow section{
+	&.bespoke-before {
+		-webkit-transform: translateX(-270px) rotateY(45deg) scale(0.6);
+		-moz-transform: translateX(-270px) rotateY(45deg) scale(0.6);
+		-ms-transform: translateX(-270px) rotateY(45deg) scale(0.6);
+		-o-transform: translateX(-270px) rotateY(45deg) scale(0.6);
+		transform: translateX(-270px) rotateY(45deg) scale(0.6);
+		z-index: 6;
+	}
+	&.bespoke-active {
+		z-index: 10;
+	}
+}
